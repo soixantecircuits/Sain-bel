@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Pole4 &middot; Made with Sencha Animator</title><script type="text/javascript">
+function setConfig(configObject) {
+	config = configObject;
+	
+	//get ol list and children
+    var ol = document.body.getElementsByTagName('ol')[0];
+    scenes = ol.children;
+
+	currentSceneIndex = -1;
+}
+
+
+function start() {	
+	goToScene(0);
+}
+
+function goToSceneID(id) {
+	for (var i=0; i < config.length; i++) {
+		if (config[i].id === id) {
+			goToScene(i);
+			return;
+		}
+	}
+}
+
+
+//function to go directly to any scene
+function goToScene(index) {
+    
+    //go to scene
+    startScene(index);
+
+	//set up timer if jumping on done
+	if (config[index].jump !== -1) {
+		applyTimeout(config[index].jump, config[index].duration);
+	}
+	
+}
+
+function startScene(index) {
+    
+	//restart current scene without flicker
+	if (index === currentSceneIndex) {
+		scenes[index].setAttribute('class','run restart');
+		setTimeout(function(){
+	        scenes[index].setAttribute('class','run');
+			},0);
+		return;
+	}
+
+    //add the class "run" to the scene currently running and remove it from anybody else
+    var scene;
+    for (var i=0; i < scenes.length; i++) {
+        scene = scenes[i];
+        if (i === index) {
+            scene.setAttribute('class','run');
+        } else {
+            scene.setAttribute('class','');
+        }
+        
+    }
+
+	currentSceneIndex = index;
+			//play video if any
+		if (index == 1){
+				var root = document.getElementById( 'player' );
+				if (true){//test if root is not empty
+					video = root.querySelector( 'video' );
+					/*
+					video.onended = function(e) {
+					      goToScene(0);
+					};
+					*/
+					video.addEventListener('ended',videoEnded,false);
+					video.play();
+				}		
+		}
+		if (index == 2){
+				var root = document.getElementById( 'player2' );
+				if (true){//test if root is not empty
+					video = root.querySelector( 'video' );
+					/*
+					video.onended = function(e) {
+					      goToScene(0);
+					};
+					*/
+					video.addEventListener('ended',videoEnded,false);
+					video.play();
+				}		
+		}
+		if (index == 3){
+				var root = document.getElementById( 'player3' );
+				if (true){//test if root is not empty
+					video = root.querySelector( 'video' );
+					/*
+					video.onended = function(e) {
+					      goToScene(0);
+					};
+					*/
+					video.addEventListener('ended',videoEnded,false);
+					video.play();
+				}		
+		}    
+}
+function videoEnded(e){
+				goToSceneID(0);
+}
+//set timeout
+function applyTimeout(index,time) {
+    setTimeout(function(){
+        goToScene(index);
+    },time);
+}
+</script><script type="text/javascript">
+window.onload=setup;
+function setup() {
+setConfig([{"jump":-1,"duration":250,"id":0},{"jump":-1,"duration":250,"id":1},{"jump":-1,"duration":250,"id":2},{"jump":-1,"duration":250,"id":3}]);
+start();
+}
+</script>
+<style type="text/css">
+
+.AN-sObj-stage {
+ border:1px solid #000;
+ position: relative;
+ overflow:hidden;
+ -webkit-perspective: 600;
+ -webkit-transform-style:preserve-3d;
+ }
+
+ .AN-sObj-stage div {
+ position: absolute;
+ }
+
+ .AN-sObj-stage a {
+color: inherit;
+ text-decoration:none;
+}
+
+ .AN-sObj-stage * {
+margin:0;
+ padding:0;
+ -webkit-font-smoothing: antialiased;
+}
+
+ body,.AN-sObj-stage,ol,li {
+margin:0;
+ padding:0;
+}
+
+ ol {
+list-style:none;
+ position:relative;
+}
+
+ li {
+position:absolute;
+ top:0;
+ left:0;
+}
+
+li {
+ display:none;
+ }
+
+li.run {
+display:block;
+ }
+
+.restart * {
+ -webkit-animation-name: none !important;
+ }
+
+.AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-73{
+ -webkit-transform: translate3d(0px, 0px, 0px);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-74{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+top:0;
+ left:0;
+background-color: rgba(30,30,30,0.84);
+ }
+
+#AN-sObj-75{
+ -webkit-transform: translate3d(732px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+ }
+
+#AN-sObj-76{
+ -webkit-transform: translate3d(438px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+ }
+
+#AN-sObj-77{
+ -webkit-transform: translate3d(144px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+ }
+
+#AN-sObj-78{
+ -webkit-transform: translate3d(0px, 0px, 0px);
+width: 1024px;
+height: 100px;
+top:0;
+ left:0;
+background-color: rgba(30,30,30,0.84);
+font-size: 72px;
+font-family: garamond;
+font-style:italic;
+color: rgba(255,255,255,1);
+text-align: center;
+text-shadow: rgba(225,225,225,0.5) 0px 0px 20px;
+ }
+
+#AN-sObj-79{
+ -webkit-transform: translate3d(138px, 627px, 0px);
+top:0;
+ left:0;
+background-color: rgba(255,255,255,0.73);
+-webkit-border-radius: 4px;
+font-size: 18px;
+font-family: garamond;
+font-style:italic;
+padding:10px;
+ }
+
+#AN-sObj-80{
+ -webkit-transform: translate3d(420px, 627px, 0px);
+top:0;
+ left:0;
+background-color: rgba(255,255,255,0.73);
+-webkit-border-radius: 4px;
+font-size: 18px;
+font-family: garamond;
+font-style:italic;
+padding:10px;
+ }
+
+#AN-sObj-81{
+ -webkit-transform: translate3d(735px, 627px, 0px);
+top:0;
+ left:0;
+background-color: rgba(255,255,255,0.73);
+-webkit-border-radius: 4px;
+font-size: 18px;
+font-family: garamond;
+font-style:italic;
+padding:10px;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+video { 
+  -webkit-transform: scaleX(1.08);
+}
+</style>
+
+</head>
+<body style="overflow:hidden;-webkit-user-select:none;">
+<ol>
+
+<li id="scene-0"><div class="AN-sObj-stage" id="ext-gen5062"><div class="AN-Object" id="AN-sObj-73"><div id="AN-sObj-val-73"><img src="assets/background.png"></div></div><div id="AN-sObj-74"><a id="AN-sObj-link-75" href="javascript:goToSceneID(3)" target="_self"> <div class="AN-Object" id="AN-sObj-75"><div id="AN-sObj-val-75"><img src="assets/terroir.png"></div></div></a><a id="AN-sObj-link-76" href="javascript:goToSceneID(2)" target="_self"> <div class="AN-Object" id="AN-sObj-76"><div id="AN-sObj-val-76"><img src="assets/qualite.png"></div></div></a><a id="AN-sObj-link-77" href="javascript:goToSceneID(1)" target="_self"> <div class="AN-Object" id="AN-sObj-77"><div id="AN-sObj-val-77"><img src="assets/democratie.png"></div></div></a></div><div id="AN-sObj-78"><span>L'esprit coopératif</span></div><a id="AN-sObj-link-79" href="javascript:goToSceneID(1)" target="_self"> <div id="AN-sObj-79"><span>La démocratie pour règle</span></div></a><a id="AN-sObj-link-80" href="javascript:goToSceneID(2)" target="_self"> <div id="AN-sObj-80"><span>La qualité en point de mire</span></div></a><a id="AN-sObj-link-81" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-81"><span>Le terroir pour guide</span></div></a></div></li>
+
+<li id="scene-1"><div class="AN-sObj-stage" id="ext-gen5143">
+	<div id="player" style="overflow:hidden;">
+	<video id="movie" width="1024" height="768">
+			 <source src="assets/democratiepourregle.mp4" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+		</video>
+	</div>
+</div></li>
+
+<li id="scene-2"><div class="AN-sObj-stage" id="ext-gen5156">
+	<div id="player2" style="overflow:hidden;">
+	<video id="movie" width="1024" height="768">
+			 <source src="assets/qualiteenpointdemire.mp4" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+		</video>
+	</div>
+</div></li>
+
+<li id="scene-3"><div class="AN-sObj-stage" id="ext-gen5169">
+	<div id="player3" style="overflow:hidden;">
+	<video id="movie" width="1024" height="768">
+			 <source src="assets/terroirpourguide.mp4" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+		</video>
+	</div>
+</div></li>
+
+</ol>
+
+</body>
+</html>

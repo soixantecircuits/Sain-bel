@@ -1,0 +1,3454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Pole1bis2 &middot; Made with Sencha Animator</title><script type="text/javascript">
+function setConfig(configObject) {
+	config = configObject;
+	
+	//get ol list and children
+    var ol = document.body.getElementsByTagName('ol')[0];
+    scenes = ol.children;
+
+	currentSceneIndex = -1;
+}
+
+
+function start() {	
+	goToScene(0);
+}
+
+function goToSceneID(id) {
+	for (var i=0; i < config.length; i++) {
+		if (config[i].id === id) {
+			goToScene(i);
+			return;
+		}
+	}
+}
+
+
+//function to go directly to any scene
+function goToScene(index) {
+    
+    //go to scene
+    startScene(index);
+
+	//set up timer if jumping on done
+	if (config[index].jump !== -1) {
+		applyTimeout(config[index].jump, config[index].duration);
+	}
+	
+}
+
+function startScene(index) {
+    
+	//restart current scene without flicker
+	if (index === currentSceneIndex) {
+		scenes[index].setAttribute('class','run restart');
+		setTimeout(function(){
+	        scenes[index].setAttribute('class','run');
+			},0);
+		return;
+	}
+
+    //add the class "run" to the scene currently running and remove it from anybody else
+    var scene;
+    for (var i=0; i < scenes.length; i++) {
+        scene = scenes[i];
+        if (i === index) {
+            scene.setAttribute('class','run');
+        } else {
+            scene.setAttribute('class','');
+        }
+        
+    }
+
+	currentSceneIndex = index;
+			//play video if any
+		if (index == 2){
+				var root = document.getElementById( 'player' );
+				if (true){//test if root is not empty
+					video = root.querySelector( 'video' );
+					/*
+					video.onended = function(e) {
+					      goToScene(0);
+					};
+					*/
+					video.addEventListener('ended',videoEnded,false);
+					video.play();
+				}		
+		}
+		if (index == 10){
+				var root = document.getElementById( 'player2' );
+				if (true){//test if root is not empty
+					video = root.querySelector( 'video' );
+					/*
+					video.onended = function(e) {
+					      goToScene(0);
+					};
+					*/
+					video.addEventListener('ended',videoEnded2,false);
+					video.play();
+				}		
+		}
+		if (index == 18){
+				var root = document.getElementById( 'player3' );
+				if (true){//test if root is not empty
+					video = root.querySelector( 'video' );
+					/*
+					video.onended = function(e) {
+					      goToScene(0);
+					};
+					*/
+					video.addEventListener('ended',videoEnded3,false);
+					video.play();
+				}		
+		}
+}
+function videoEnded(e){
+			goToScene(3);
+}
+function videoEnded2(e){
+			goToSceneID(15);
+}
+function videoEnded3(e){
+			goToSceneID(24);
+}
+
+//set timeout
+function applyTimeout(index,time) {
+    setTimeout(function(){
+        goToScene(index);
+    },time);
+}
+</script><script type="text/javascript">
+window.onload=setup;
+function setup() {
+setConfig([{"jump":-1,"duration":250,"id":0},{"jump":2,"duration":1260,"id":5},{"jump":-1,"duration":250,"id":12},{"jump":4,"duration":1270,"id":6},{"jump":-1,"duration":250,"id":11},{"jump":-1,"duration":1270,"id":7},{"jump":-1,"duration":1270,"id":8},{"jump":-1,"duration":1270,"id":9},{"jump":-1,"duration":1270,"id":10},{"jump":10,"duration":1260,"id":13},{"jump":-1,"duration":250,"id":14},{"jump":12,"duration":1270,"id":15},{"jump":-1,"duration":250,"id":16},{"jump":-1,"duration":1270,"id":17},{"jump":-1,"duration":1270,"id":18},{"jump":-1,"duration":1270,"id":19},{"jump":-1,"duration":1270,"id":20},{"jump":18,"duration":1260,"id":22},{"jump":-1,"duration":250,"id":23},{"jump":20,"duration":1270,"id":24},{"jump":-1,"duration":250,"id":25},{"jump":-1,"duration":1270,"id":26},{"jump":-1,"duration":1270,"id":27},{"jump":-1,"duration":1270,"id":28},{"jump":-1,"duration":1270,"id":29}]);
+start();
+}
+</script>
+<style type="text/css">
+
+.AN-sObj-stage {
+ border:1px solid #000;
+ position: relative;
+ overflow:hidden;
+ -webkit-perspective: 600;
+ -webkit-transform-style:preserve-3d;
+ }
+
+ .AN-sObj-stage div {
+ position: absolute;
+ }
+
+ .AN-sObj-stage a {
+color: inherit;
+ text-decoration:none;
+}
+
+ .AN-sObj-stage * {
+margin:0;
+ padding:0;
+ -webkit-font-smoothing: antialiased;
+}
+
+ body,.AN-sObj-stage,ol,li {
+margin:0;
+ padding:0;
+}
+
+ ol {
+list-style:none;
+ position:relative;
+}
+
+ li {
+position:absolute;
+ top:0;
+ left:0;
+}
+
+li {
+ display:none;
+ }
+
+li.run {
+display:block;
+ }
+
+.restart * {
+ -webkit-animation-name: none !important;
+ }
+
+.AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5627{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+overflow: hidden;
+overflow:hidden;
+ }
+
+#AN-sObj-5628{
+ -webkit-transform: translate3d(10px, 10px, 0px);
+width: 100px;
+height: 100px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5629{
+ -webkit-transform: translate3d(608px, 186px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(222,216,91,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-5630{
+ -webkit-transform: translate3d(323px, 308px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(35,176,113,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-5631{
+ -webkit-transform: translate3d(832px, 484px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(213,47,93,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5633{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5634{
+ -webkit-transform: translate3d(10px, 10px, 0px);
+width: 100px;
+height: 100px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5635{
+ -webkit-transform: translate3d(608px, 186px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(222,216,91,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-5636{
+ -webkit-transform: translate3d(323px, 308px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(35,176,113,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-5637{
+ -webkit-transform: translate3d(832px, 484px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(213,47,93,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5640{
+ -webkit-transform: translate3d(0px, 0px, 0px);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5642{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5643{
+ -webkit-transform: translate3d(102px, 61px, 0px);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+ }
+
+#AN-sObj-5644{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5645{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/pressoir1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5646{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5647{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5648{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/pressoir2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5649{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 0;
+ }
+
+#AN-sObj-5650{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5654{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5655{
+ -webkit-transform: translate3d(102px, 61px, 0px);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+ }
+
+#AN-sObj-5656{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5657{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/pressoir1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5658{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5659{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5660{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/pressoir2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5661{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 0;
+ }
+
+#AN-sObj-5662{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5664{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5665{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-size: 55%;
+background-position:center center;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/pressoir1_crop.png");
+letter-spacing: 1px;
+ }
+
+#AN-sObj-5666{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5667{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 4px;
+0;
+border-top: 1px solid rgba(127,127,127,1);
+border-right: 1px solid rgba(127,127,127,1);
+border-bottom: 1px solid rgba(127,127,127,1);
+border-left: 1px solid rgba(127,127,127,1);
+background-image: url("assets/pressoir1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5668{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5669{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5670{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/pressoir2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5671{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5672{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5676{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5677{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 68%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/pressoir2.png");
+ }
+
+#AN-sObj-5678{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5679{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/pressoir1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5680{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5681{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5682{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/pressoir2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5683{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5684{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5688{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5689{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 68%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/pressoir3.png");
+ }
+
+#AN-sObj-5690{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5691{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/pressoir1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5692{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5693{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5694{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/pressoir2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5695{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5696{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5700{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5701{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 68%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/pressoir4.png");
+opacity: 0.8;
+ }
+
+#AN-sObj-5702{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5703{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/pressoir1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5704{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5705{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5706{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/pressoir2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5707{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5708{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5712{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5713{
+ -webkit-transform: translate3d(10px, 10px, 0px);
+width: 100px;
+height: 100px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5714{
+ -webkit-transform: translate3d(608px, 186px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(222,216,91,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-5715{
+ -webkit-transform: translate3d(323px, 308px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(35,176,113,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-5716{
+ -webkit-transform: translate3d(832px, 484px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(213,47,93,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5719{
+ -webkit-transform: translate3d(0px, 0px, 0px);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5721{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5722{
+ -webkit-transform: translate3d(102px, 61px, 0px);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+ }
+
+#AN-sObj-5723{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5724{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/banquet1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5725{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5726{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5727{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/banquet2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5728{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 0;
+ }
+
+#AN-sObj-5729{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5733{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5734{
+ -webkit-transform: translate3d(102px, 61px, 0px);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+ }
+
+#AN-sObj-5735{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5736{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/banquet1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5737{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5738{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5739{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/banquet2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5740{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 0;
+ }
+
+#AN-sObj-5741{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5743{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5744{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-size: 65%;
+background-position:center center;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/banquet1.png");
+letter-spacing: 1px;
+ }
+
+#AN-sObj-5745{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5746{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 4px;
+0;
+border-top: 1px solid rgba(127,127,127,1);
+border-right: 1px solid rgba(127,127,127,1);
+border-bottom: 1px solid rgba(127,127,127,1);
+border-left: 1px solid rgba(127,127,127,1);
+background-image: url("assets/banquet1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5747{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5748{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5749{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/banquet2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5750{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5751{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5755{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5756{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 68%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/banquet2.png");
+ }
+
+#AN-sObj-5757{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5758{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/banquet1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5759{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5760{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5761{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/banquet2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5762{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5763{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5767{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5768{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 43%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/banquet3.png");
+ }
+
+#AN-sObj-5769{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5770{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/banquet1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5771{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5772{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5773{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/banquet2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5774{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5775{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5779{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5780{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 42%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/banquet4.png");
+opacity: 1;
+ }
+
+#AN-sObj-5781{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5782{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/banquet1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5783{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5784{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5785{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/banquet2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5786{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5787{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5791{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5792{
+ -webkit-transform: translate3d(10px, 10px, 0px);
+width: 100px;
+height: 100px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5793{
+ -webkit-transform: translate3d(608px, 186px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(222,216,91,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-5794{
+ -webkit-transform: translate3d(323px, 308px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(35,176,113,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-5795{
+ -webkit-transform: translate3d(832px, 484px, 0px);
+width: 100px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 50px;
+background-color: rgba(213,47,93,0.4);
+top:0;
+ left:0;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-size: 24px;
+text-align: center;
+-webkit-transform-origin: 0% 0%;
+line-height: 400%;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5798{
+ -webkit-transform: translate3d(0px, 0px, 0px);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5800{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5801{
+ -webkit-transform: translate3d(102px, 61px, 0px);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+ }
+
+#AN-sObj-5802{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5803{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/vigne1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5804{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5805{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5806{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/vigne2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5807{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 0;
+ }
+
+#AN-sObj-5808{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5812{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5813{
+ -webkit-transform: translate3d(102px, 61px, 0px);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+ }
+
+#AN-sObj-5814{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5815{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/vigne1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5816{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5817{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5818{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/vigne2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5819{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 0;
+ }
+
+#AN-sObj-5820{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5822{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5823{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-size: 73%;
+background-position:center center;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/vigne1.png");
+letter-spacing: 1px;
+ }
+
+#AN-sObj-5824{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5825{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 4px;
+0;
+border-top: 1px solid rgba(127,127,127,1);
+border-right: 1px solid rgba(127,127,127,1);
+border-bottom: 1px solid rgba(127,127,127,1);
+border-left: 1px solid rgba(127,127,127,1);
+background-image: url("assets/vigne1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5826{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5827{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5828{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/vigne2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5829{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5830{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5834{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5835{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 83%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/vigne2.png");
+ }
+
+#AN-sObj-5836{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5837{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/vigne1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5838{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5839{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5840{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/vigne2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5841{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5842{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5846{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5847{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 83%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/vigne3.png");
+ }
+
+#AN-sObj-5848{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5849{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/vigne1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5850{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5851{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5852{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/vigne2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5853{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5854{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-stage{
+ height: 768px;
+width: 1024px;
+background-color: rgba(255,255,255,1);
+border:1px solid rgba(10,10,10,1);
+ }
+
+#AN-sObj-5858{
+ -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+width: 1024px;
+height: 768px;
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5859{
+ -webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+top:0;
+ left:0;
+width: 800px;
+height: 500px;
+font-size: 18px;
+line-height: 150%;
+background-color: rgba(255,255,255,0.55);
+-webkit-border-radius: 20px;
+padding: 20px 20px;
+background-repeat:no-repeat;
+background-position:center center;
+background-size: 82%;
+;
+font-family: Georgia, "Times New Roman", Times, serif;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+background-image: url("assets/vigne4.png");
+opacity: 1;
+ }
+
+#AN-sObj-5860{
+ -webkit-transform: translate3d(0px, 668px, 0px);
+width: 1024px;
+height: 100px;
+border-top: 1px solid rgba(1,14,13,1);
+border-right: 1px solid rgba(1,14,13,1);
+border-bottom: 1px solid rgba(1,14,13,1);
+border-left: 1px solid rgba(1,14,13,1);
+-webkit-border-radius: 2px;
+background-color: rgba(0,0,0,0.65);
+top:0;
+ left:0;
+ }
+
+#AN-sObj-5861{
+ -webkit-transform: translate3d(100px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 8px;
+padding:0px;
+border-top: 0px solid rgba(255,255,255,1);
+border-right: 0px solid rgba(255,255,255,1);
+border-bottom: 0px solid rgba(255,255,255,1);
+border-left: 0px solid rgba(255,255,255,1);
+background-image: url("assets/vigne1_btn.png");
+opacity: 1;
+background-image: -webkit-gradient(linear, 0% 0%,0% 100%,color-stop(0, rgba(255,255,255,1)),color-stop(0, rgba(255,255,255,1)),color-stop(1, rgba(0,0,0,1)));
+ }
+
+#AN-sObj-5862{
+ -webkit-transform: translate3d(793px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5863{
+ -webkit-transform: translate3d(552px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+ }
+
+#AN-sObj-5864{
+ -webkit-transform: translate3d(322px, 5px, 0px);
+width: 150px;
+height: 90px;
+top:0;
+ left:0;
+overflow: hidden;
+background-color: rgba(255,255,255,1);
+-webkit-border-radius: 10px;
+background-image: url("assets/vigne2_btn.png");
+opacity: 1;
+-webkit-animation-iteration-count: 1;
+ }
+
+#AN-sObj-5865{
+ -webkit-transform: translate3d(948px, -17px, 0px) scale3d(0.5, 0.5, 1);
+width: 86px;
+height: 103px;
+top:0;
+ left:0;
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+opacity: 1;
+ }
+
+#AN-sObj-5866{
+ -webkit-transform: translate3d(-24px, -24px, 0px) scale3d(0.5, 0.5, 1);
+width: 128px;
+height: 128px;
+top:0;
+ left:0;
+ }
+
+@-webkit-keyframes AN-ani-5638 {
+0% {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 1;
+}
+100% {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 0;
+}
+}
+
+.run #AN-sObj-5634 {
+-webkit-animation-name: AN-ani-5638;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5634 {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 1;
+}
+@-webkit-keyframes AN-ani-5651 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 0;
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 1;
+}
+}
+
+.run #AN-sObj-5643 {
+-webkit-animation-name: AN-ani-5651;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5643 {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 0;
+}
+@-webkit-keyframes AN-ani-5652 {
+0% {
+-webkit-transform: translate3d(0px, 768px, 0px);
+}
+100% {
+-webkit-transform: translate3d(0px, 668px, 0px);
+}
+}
+
+.run #AN-sObj-5644 {
+-webkit-animation-name: AN-ani-5652;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5644 {
+-webkit-transform: translate3d(0px, 768px, 0px);
+}
+@-webkit-keyframes AN-ani-5673 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5665 {
+-webkit-animation-name: AN-ani-5673;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5665 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5674 {
+0% {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5667 {
+-webkit-animation-name: AN-ani-5674;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5667 {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5685 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5677 {
+-webkit-animation-name: AN-ani-5685;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5677 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5686 {
+0% {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5682 {
+-webkit-animation-name: AN-ani-5686;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5682 {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5697 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5689 {
+-webkit-animation-name: AN-ani-5697;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5689 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5698 {
+0% {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5693 {
+-webkit-animation-name: AN-ani-5698;
+-webkit-animation-duration: 1s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5693 {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5709 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5701 {
+-webkit-animation-name: AN-ani-5709;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5701 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5710 {
+0% {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5704 {
+-webkit-animation-name: AN-ani-5710;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5704 {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5717 {
+0% {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 1;
+}
+100% {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 0;
+}
+}
+
+.run #AN-sObj-5713 {
+-webkit-animation-name: AN-ani-5717;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5713 {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 1;
+}
+@-webkit-keyframes AN-ani-5730 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 0;
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 1;
+}
+}
+
+.run #AN-sObj-5722 {
+-webkit-animation-name: AN-ani-5730;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5722 {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 0;
+}
+@-webkit-keyframes AN-ani-5731 {
+0% {
+-webkit-transform: translate3d(0px, 768px, 0px);
+}
+100% {
+-webkit-transform: translate3d(0px, 668px, 0px);
+}
+}
+
+.run #AN-sObj-5723 {
+-webkit-animation-name: AN-ani-5731;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5723 {
+-webkit-transform: translate3d(0px, 768px, 0px);
+}
+@-webkit-keyframes AN-ani-5752 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5744 {
+-webkit-animation-name: AN-ani-5752;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5744 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5753 {
+0% {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5746 {
+-webkit-animation-name: AN-ani-5753;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5746 {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5764 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5756 {
+-webkit-animation-name: AN-ani-5764;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5756 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5765 {
+0% {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5761 {
+-webkit-animation-name: AN-ani-5765;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5761 {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5776 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5768 {
+-webkit-animation-name: AN-ani-5776;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5768 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5777 {
+0% {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5772 {
+-webkit-animation-name: AN-ani-5777;
+-webkit-animation-duration: 1s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5772 {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5788 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5780 {
+-webkit-animation-name: AN-ani-5788;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5780 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5789 {
+0% {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5783 {
+-webkit-animation-name: AN-ani-5789;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5783 {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5796 {
+0% {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 1;
+}
+100% {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 0;
+}
+}
+
+.run #AN-sObj-5792 {
+-webkit-animation-name: AN-ani-5796;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5792 {
+-webkit-transform: translate3d(10px, 10px, 0px);
+opacity: 1;
+}
+@-webkit-keyframes AN-ani-5809 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 0;
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 1;
+}
+}
+
+.run #AN-sObj-5801 {
+-webkit-animation-name: AN-ani-5809;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5801 {
+-webkit-transform: translate3d(102px, 61px, 0px);
+opacity: 0;
+}
+@-webkit-keyframes AN-ani-5810 {
+0% {
+-webkit-transform: translate3d(0px, 768px, 0px);
+}
+100% {
+-webkit-transform: translate3d(0px, 668px, 0px);
+}
+}
+
+.run #AN-sObj-5802 {
+-webkit-animation-name: AN-ani-5810;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5802 {
+-webkit-transform: translate3d(0px, 768px, 0px);
+}
+@-webkit-keyframes AN-ani-5831 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5823 {
+-webkit-animation-name: AN-ani-5831;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5823 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5832 {
+0% {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5825 {
+-webkit-animation-name: AN-ani-5832;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5825 {
+-webkit-transform: translate3d(100px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5843 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5835 {
+-webkit-animation-name: AN-ani-5843;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5835 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5844 {
+0% {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5840 {
+-webkit-animation-name: AN-ani-5844;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5840 {
+-webkit-transform: translate3d(322px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5855 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5847 {
+-webkit-animation-name: AN-ani-5855;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5847 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5856 {
+0% {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5851 {
+-webkit-animation-name: AN-ani-5856;
+-webkit-animation-duration: 1s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5851 {
+-webkit-transform: translate3d(552px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+@-webkit-keyframes AN-ani-5867 {
+0% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+100% {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+}
+
+.run #AN-sObj-5859 {
+-webkit-animation-name: AN-ani-5867;
+-webkit-animation-duration: 1.02s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5859 {
+-webkit-transform: translate3d(102px, 61px, 0px) scale3d(1, 1, 1);
+}
+@-webkit-keyframes AN-ani-5868 {
+0% {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+100% {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+}
+}
+
+.run #AN-sObj-5862 {
+-webkit-animation-name: AN-ani-5868;
+-webkit-animation-duration: 1.01s;
+-webkit-animation-delay: 0s;
+-webkit-animation-fill-mode: both;
+}
+.restart #AN-sObj-5862 {
+-webkit-transform: translate3d(793px, 5px, 0px);
+-webkit-box-shadow: 0px 0px 60px rgba(255,255,255,0.5);
+}
+
+video { 
+  -webkit-transform: scaleX(1.1); 
+}
+</style>
+
+</head>
+<body style="overflow:hidden;-webkit-user-select:none;">
+<ol>
+
+<li id="scene-0"><div class="AN-sObj-stage" id="ext-gen4188"><div class="AN-Object" id="AN-sObj-5627"><div id="AN-sObj-val-5627"><img src="assets/Image fixe intro 4-3.jpg"></div></div><div id="AN-sObj-5628"><a id="AN-sObj-link-5629" href="javascript:goToSceneID(13)" target="_self"> <div id="AN-sObj-5629"><span>Banquet</span></div></a><a id="AN-sObj-link-5630" href="javascript:goToSceneID(5)" target="_self"> <div id="AN-sObj-5630"><span>Pressoir</span></div></a><a id="AN-sObj-link-5631" href="javascript:goToSceneID(22)" target="_self"> <div id="AN-sObj-5631"><span>Vigne</span></div></a></div></div></li>
+
+<li id="scene-1"><div class="AN-sObj-stage" id="ext-gen4225"><div class="AN-Object" id="AN-sObj-5633"><div id="AN-sObj-val-5633"><img src="assets/Image fixe intro 4-3.jpg"></div></div><div id="AN-sObj-5634"><a id="AN-sObj-link-5635" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5635"><span>Banquet</span></div></a><a id="AN-sObj-link-5636" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5636"><span>Pressoir</span></div></a><a id="AN-sObj-link-5637" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5637"><span>Vigne</span></div></a></div></div></li>
+
+<li id="scene-2"><div class="AN-sObj-stage" id="ext-gen4258"><div class="AN-Object" id="AN-sObj-5640">
+	<div id="AN-sObj-val-5640"><img src="assets/Image fixe intro 4-3.jpg"></div>
+	<div id="player" style="overflow:hidden;">
+	<video id="movie" width="1024" height="768">
+			 <source src="assets/pressoir.mp4" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+		</video>
+	</div>
+</div></div></li>
+
+<li id="scene-3"><div class="AN-sObj-stage" id="ext-gen4287"><div class="AN-Object" id="AN-sObj-5642"><div id="AN-sObj-val-5642"><img src="assets/pressoir_fin.jpg"></div></div><div id="AN-sObj-5643"><span>Le premier pressoir contemporain des vignobles fouillés au nord de la villa a été découvert et fouillé en 2010. Il n’en subsiste que les fondations en bois calciné, dont les « fantômes » se sont conservés dans le sol. Il est associé à une grande cuve en béton étanche, qui a aussi bien pu servir de cuve de foulage que de bac de recueil pour le moût. Le produit des vendanges, transporté dans des paniers en osier,  est mis dans la cuve et foulé au pied. Cette opération permet d’obtenir entre 70 et 80 % du jus présent dans la pulpe. Le marc de raisin est ensuite placé dans des cadres en bois et soumis à la pression d’une poutre très massive pesant parfois jusqu’à plusieurs tonnes, maintenue sur des poteaux verticaux et actionnée à l’aide d’un treuil à main. L’ensemble est monté sur une sorte de plate-forme de travail, comportant au centre une grande cuve en bois implantée dans le sol, qui permettait de recueillir les 20 à 30 % de jus restant. Le moût est mis à fermenter dans de grands tonneaux qui n’ont pas été retrouvés, mais sont bien attestés dans la région lyonnaise à l‘époque romaine.Le dispositif découvert dans la villa de Saint-Laurent-d’Agny est aussi original que le vignoble qui l’alimente. Il correspond à un type bien particulier de pressoir à support central dit « pompéien », développé en Italie à la fin de la République et très peu diffusé en Gaule. Ce choix technique renvoie, là encore, aux origines italiennes du propriétaire des lieux. Ce premier pressoir fait place, au 2e et 3e s. apr. J.-C., à une installation vinicole de plus grande ampleur, dotée de deux pressoirs, de plusieurs bassins et d’une cuve de foulage. Des pépins de raisin carbonisés ont même été recueillis, qui confirment la fonction des vestiges.</span></div><div id="AN-sObj-5644"><a id="AN-sObj-link-5645" href="javascript:goToSceneID(7)" target="_self"> <div class="AN-Object" id="AN-sObj-5645"><div id="AN-sObj-val-5645"><img src="assets/pressoir1_btn.png"></div></div></a><a id="AN-sObj-link-5646" href="javascript:goToSceneID(10)" target="_self"> <div class="AN-Object" id="AN-sObj-5646"><div id="AN-sObj-val-5646"><img src="assets/pressoir4_btn.png"></div></div></a><a id="AN-sObj-link-5647" href="javascript:goToSceneID(9)" target="_self"> <div class="AN-Object" id="AN-sObj-5647"><div id="AN-sObj-val-5647"><img src="assets/pressoir3_btn.png"></div></div></a><a id="AN-sObj-link-5648" href="javascript:goToSceneID(8)" target="_self"> <div class="AN-Object" id="AN-sObj-5648"><div id="AN-sObj-val-5648"><img src="assets/pressoir2_btn.png"></div></div></a></div><div class="AN-Object" id="AN-sObj-5649"><div id="AN-sObj-val-5649"><img src="assets/Text-ico.png"></div></div><a id="AN-sObj-link-5650" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5650"><div id="AN-sObj-val-5650"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-4"><div class="AN-sObj-stage" id="ext-gen4351"><div class="AN-Object" id="AN-sObj-5654"><div id="AN-sObj-val-5654"><img src="assets/pressoir_fin.jpg"></div></div><div id="AN-sObj-5655"><span>Le premier pressoir contemporain des vignobles fouillés au nord de la villa a été découvert et fouillé en 2010. Il n’en subsiste que les fondations en bois calciné, dont les « fantômes » se sont conservés dans le sol. Il est associé à une grande cuve en béton étanche, qui a aussi bien pu servir de cuve de foulage que de bac de recueil pour le moût. Le produit des vendanges, transporté dans des paniers en osier,  est mis dans la cuve et foulé au pied. Cette opération permet d’obtenir entre 70 et 80 % du jus présent dans la pulpe. Le marc de raisin est ensuite placé dans des cadres en bois et soumis à la pression d’une poutre très massive pesant parfois jusqu’à plusieurs tonnes, maintenue sur des poteaux verticaux et actionnée à l’aide d’un treuil à main. L’ensemble est monté sur une sorte de plate-forme de travail, comportant au centre une grande cuve en bois implantée dans le sol, qui permettait de recueillir les 20 à 30 % de jus restant. Le moût est mis à fermenter dans de grands tonneaux qui n’ont pas été retrouvés, mais sont bien attestés dans la région lyonnaise à l‘époque romaine.Le dispositif découvert dans la villa de Saint-Laurent-d’Agny est aussi original que le vignoble qui l’alimente. Il correspond à un type bien particulier de pressoir à support central dit « pompéien », développé en Italie à la fin de la République et très peu diffusé en Gaule. Ce choix technique renvoie, là encore, aux origines italiennes du propriétaire des lieux. Ce premier pressoir fait place, au 2e et 3e s. apr. J.-C., à une installation vinicole de plus grande ampleur, dotée de deux pressoirs, de plusieurs bassins et d’une cuve de foulage. Des pépins de raisin carbonisés ont même été recueillis, qui confirment la fonction des vestiges.</span></div><div id="AN-sObj-5656"><a id="AN-sObj-link-5657" href="javascript:goToSceneID(7)" target="_self"> <div class="AN-Object" id="AN-sObj-5657"><div id="AN-sObj-val-5657"><img src="assets/pressoir1_btn.png"></div></div></a><a id="AN-sObj-link-5658" href="javascript:goToSceneID(10)" target="_self"> <div class="AN-Object" id="AN-sObj-5658"><div id="AN-sObj-val-5658"><img src="assets/pressoir4_btn.png"></div></div></a><a id="AN-sObj-link-5659" href="javascript:goToSceneID(9)" target="_self"> <div class="AN-Object" id="AN-sObj-5659"><div id="AN-sObj-val-5659"><img src="assets/pressoir3_btn.png"></div></div></a><a id="AN-sObj-link-5660" href="javascript:goToSceneID(8)" target="_self"> <div class="AN-Object" id="AN-sObj-5660"><div id="AN-sObj-val-5660"><img src="assets/pressoir2_btn.png"></div></div></a></div><div class="AN-Object" id="AN-sObj-5661"><div id="AN-sObj-val-5661"><img src="assets/Text-ico.png"></div></div><a id="AN-sObj-link-5662" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5662"><div id="AN-sObj-val-5662"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-5"><div class="AN-sObj-stage" id="ext-gen4415"><div class="AN-Object" id="AN-sObj-5664"><div id="AN-sObj-val-5664"><img src="assets/pressoir_fin.jpg"></div></div><div id="AN-sObj-5665"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Traces de poutres calcinées correspondant à la fondation en bois du pressoir (1er s. apr. J.-C.)</span></div><div id="AN-sObj-5666"><div class="AN-Object" id="AN-sObj-5667"><div id="AN-sObj-val-5667"><img src="assets/pressoir1_btn.png"></div></div><a id="AN-sObj-link-5668" href="javascript:goToSceneID(10)" target="_self"> <div class="AN-Object" id="AN-sObj-5668"><div id="AN-sObj-val-5668"><img src="assets/pressoir4_btn.png"></div></div></a><a id="AN-sObj-link-5669" href="javascript:goToSceneID(9)" target="_self"> <div class="AN-Object" id="AN-sObj-5669"><div id="AN-sObj-val-5669"><img src="assets/pressoir3_btn.png"></div></div></a><a id="AN-sObj-link-5670" href="javascript:goToSceneID(8)" target="_self"> <div class="AN-Object" id="AN-sObj-5670"><div id="AN-sObj-val-5670"><img src="assets/pressoir2_btn.png"></div></div></a></div><a id="AN-sObj-link-5671" href="javascript:goToSceneID(11)" target="_self"> <div class="AN-Object" id="AN-sObj-5671"><div id="AN-sObj-val-5671"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5672" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5672"><div id="AN-sObj-val-5672"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-6"><div class="AN-sObj-stage" id="ext-gen4479"><div class="AN-Object" id="AN-sObj-5676"><div id="AN-sObj-val-5676"><img src="assets/pressoir_fin.jpg"></div></div><div id="AN-sObj-5677"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Reconstitution d’un pressoir romain de type « pompéien » (Pompéi, Villa des Mystères, photo B. Clément)</span></div><div id="AN-sObj-5678"><a id="AN-sObj-link-5679" href="javascript:goToSceneID(7)" target="_self"> <div class="AN-Object" id="AN-sObj-5679"><div id="AN-sObj-val-5679"><img src="assets/pressoir1_btn.png"></div></div></a><a id="AN-sObj-link-5680" href="javascript:goToSceneID(10)" target="_self"> <div class="AN-Object" id="AN-sObj-5680"><div id="AN-sObj-val-5680"><img src="assets/pressoir4_btn.png"></div></div></a><a id="AN-sObj-link-5681" href="javascript:goToSceneID(9)" target="_self"> <div class="AN-Object" id="AN-sObj-5681"><div id="AN-sObj-val-5681"><img src="assets/pressoir3_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5682"><div id="AN-sObj-val-5682"><img src="assets/pressoir2_btn.png"></div></div></div><a id="AN-sObj-link-5683" href="javascript:goToSceneID(11)" target="_self"> <div class="AN-Object" id="AN-sObj-5683"><div id="AN-sObj-val-5683"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5684" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5684"><div id="AN-sObj-val-5684"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-7"><div class="AN-sObj-stage" id="ext-gen4543"><div class="AN-Object" id="AN-sObj-5688"><div id="AN-sObj-val-5688"><img src="assets/pressoir_fin.jpg"></div></div><div id="AN-sObj-5689"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>L’installation vinicole du 2e - 3e s. apr. J.-C. : fondations de pressoir et cuves de recueil du moût (photo M. Poux)</span></div><div id="AN-sObj-5690"><a id="AN-sObj-link-5691" href="javascript:goToSceneID(7)" target="_self"> <div class="AN-Object" id="AN-sObj-5691"><div id="AN-sObj-val-5691"><img src="assets/pressoir1_btn.png"></div></div></a><a id="AN-sObj-link-5692" href="javascript:goToSceneID(10)" target="_self"> <div class="AN-Object" id="AN-sObj-5692"><div id="AN-sObj-val-5692"><img src="assets/pressoir4_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5693"><div id="AN-sObj-val-5693"><img src="assets/pressoir3_btn.png"></div></div><a id="AN-sObj-link-5694" href="javascript:goToSceneID(8)" target="_self"> <div class="AN-Object" id="AN-sObj-5694"><div id="AN-sObj-val-5694"><img src="assets/pressoir2_btn.png"></div></div></a></div><a id="AN-sObj-link-5695" href="javascript:goToSceneID(11)" target="_self"> <div class="AN-Object" id="AN-sObj-5695"><div id="AN-sObj-val-5695"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5696" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5696"><div id="AN-sObj-val-5696"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-8"><div class="AN-sObj-stage" id="ext-gen4607"><div class="AN-Object" id="AN-sObj-5700"><div id="AN-sObj-val-5700"><img src="assets/pressoir_fin.jpg"></div></div><div id="AN-sObj-5701"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Pépins de raisin carbonisés, recueillis dans l’installation vinicole du 2e - 3e s. apr. J.-C. (photo M. Poux)</span></div><div id="AN-sObj-5702"><a id="AN-sObj-link-5703" href="javascript:goToSceneID(7)" target="_self"> <div class="AN-Object" id="AN-sObj-5703"><div id="AN-sObj-val-5703"><img src="assets/pressoir1_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5704"><div id="AN-sObj-val-5704"><img src="assets/pressoir4_btn.png"></div></div><a id="AN-sObj-link-5705" href="javascript:goToSceneID(9)" target="_self"> <div class="AN-Object" id="AN-sObj-5705"><div id="AN-sObj-val-5705"><img src="assets/pressoir3_btn.png"></div></div></a><a id="AN-sObj-link-5706" href="javascript:goToSceneID(8)" target="_self"> <div class="AN-Object" id="AN-sObj-5706"><div id="AN-sObj-val-5706"><img src="assets/pressoir2_btn.png"></div></div></a></div><a id="AN-sObj-link-5707" href="javascript:goToSceneID(11)" target="_self"> <div class="AN-Object" id="AN-sObj-5707"><div id="AN-sObj-val-5707"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5708" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5708"><div id="AN-sObj-val-5708"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-9"><div class="AN-sObj-stage" id="ext-gen4667"><div class="AN-Object" id="AN-sObj-5712"><div id="AN-sObj-val-5712"><img src="assets/Image fixe intro 4-3.jpg"></div></div><div id="AN-sObj-5713"><a id="AN-sObj-link-5714" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5714"><span>Banquet</span></div></a><a id="AN-sObj-link-5715" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5715"><span>Pressoir</span></div></a><a id="AN-sObj-link-5716" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5716"><span>Vigne</span></div></a></div></div></li>
+
+<li id="scene-10"><div class="AN-sObj-stage" id="ext-gen4700"> <div class="AN-Object" id="AN-sObj-5719"><div id="AN-sObj-val-5719"><img src="assets/Image fixe intro 4-3.jpg"></div>
+	<div id="player2" style="overflow:hidden;">
+	<video id="movie" width="1024" height="768">
+			 <source src="assets/banquet.mp4" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+		</video>
+	</div>
+</div></div></li>
+
+<li id="scene-11"><div class="AN-sObj-stage" id="ext-gen4729"><div class="AN-Object" id="AN-sObj-5721"><div id="AN-sObj-val-5721"><img src="assets/banqet_fin.jpg"></div></div><div id="AN-sObj-5722"><span>Au centre de la villa, dans le prolongement des jardins, une vaste pièce s’ouvre derrière un grand bassin, flanqué de deux colonnes. Elle correspond à la salle à manger, ou triclinium, mot grec qui signifie « trois lits » et fait référence aux couchettes sur lesquelles s’allongeaient les convives. C’est dans cet espace que le maître de maison recevait ses hôtes et exhibait sa fortune.<br><br>Les murs et le sol de la salle sont décorés avec goût. En témoigne la découverte d’une mosaïque en couleur retrouvée pratiquement intacte, miraculeusement préservée par les travaux agricoles qui ont détruit les sols de la villa. Posée comme un tableau au centre de la pièce, elle figure un personnage vêtu à la manière du dieu grec Dionysos : manteau grec, diadème serti de pierres précieuses, couronne de lierre, sceptre orné d’une pomme de pin et de bandelettes... Des masques de théâtre l’encadrent aux quatre coins, dont le visage emprunte les traits des membres du cortège de Bacchus. <br><br>Le personnage n’a pas été choisi au hasard. Lorsque les convives sont réunis à table pour déguster les produits de l’exploitation, Bacchus trône au centre de la fête et de la conversation. Il permet au propriétaire d’afficher son activité, mais aussi, sa culture classique ; son goût pour le vin et les pièces de théâtre données dans les villes voisines de Lugdunum et de Vienne.</span></div><div id="AN-sObj-5723"><a id="AN-sObj-link-5724" href="javascript:goToSceneID(7)" target="_self"> <div class="AN-Object" id="AN-sObj-5724"><div id="AN-sObj-val-5724"><img src="assets/banquet1_btn.png"></div></div></a><a id="AN-sObj-link-5725" href="javascript:goToSceneID(10)" target="_self"> <div class="AN-Object" id="AN-sObj-5725"><div id="AN-sObj-val-5725"><img src="assets/banquet4_btn.png"></div></div></a><a id="AN-sObj-link-5726" href="javascript:goToSceneID(9)" target="_self"> <div class="AN-Object" id="AN-sObj-5726"><div id="AN-sObj-val-5726"><img src="assets/banquet3_btn.png"></div></div></a><a id="AN-sObj-link-5727" href="javascript:goToSceneID(8)" target="_self"> <div class="AN-Object" id="AN-sObj-5727"><div id="AN-sObj-val-5727"><img src="assets/banquet2_btn.png"></div></div></a></div><div class="AN-Object" id="AN-sObj-5728"><div id="AN-sObj-val-5728"><img src="assets/Text-ico.png"></div></div><a id="AN-sObj-link-5729" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5729"><div id="AN-sObj-val-5729"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-12"><div class="AN-sObj-stage" id="ext-gen4793"><div class="AN-Object" id="AN-sObj-5733"><div id="AN-sObj-val-5733"><img src="assets/banqet_fin.jpg"></div></div><div id="AN-sObj-5734"><span>Au centre de la villa, dans le prolongement des jardins, une vaste pièce s’ouvre derrière un grand bassin, flanqué de deux colonnes. Elle correspond à la salle à manger, ou triclinium, mot grec qui signifie « trois lits » et fait référence aux couchettes sur lesquelles s’allongeaient les convives. C’est dans cet espace que le maître de maison recevait ses hôtes et exhibait sa fortune.<br><br>Les murs et le sol de la salle sont décorés avec goût. En témoigne la découverte d’une mosaïque en couleur retrouvée pratiquement intacte, miraculeusement préservée par les travaux agricoles qui ont détruit les sols de la villa. Posée comme un tableau au centre de la pièce, elle figure un personnage vêtu à la manière du dieu grec Dionysos : manteau grec, diadème serti de pierres précieuses, couronne de lierre, sceptre orné d’une pomme de pin et de bandelettes... Des masques de théâtre l’encadrent aux quatre coins, dont le visage emprunte les traits des membres du cortège de Bacchus. <br><br>Le personnage n’a pas été choisi au hasard. Lorsque les convives sont réunis à table pour déguster les produits de l’exploitation, Bacchus trône au centre de la fête et de la conversation. Il permet au propriétaire d’afficher son activité, mais aussi, sa culture classique ; son goût pour le vin et les pièces de théâtre données dans les villes voisines de Lugdunum et de Vienne.</span></div><div id="AN-sObj-5735"><a id="AN-sObj-link-5736" href="javascript:goToSceneID(17)" target="_self"> <div class="AN-Object" id="AN-sObj-5736"><div id="AN-sObj-val-5736"><img src="assets/banquet1_btn.png"></div></div></a><a id="AN-sObj-link-5737" href="javascript:goToSceneID(20)" target="_self"> <div class="AN-Object" id="AN-sObj-5737"><div id="AN-sObj-val-5737"><img src="assets/banquet4_btn.png"></div></div></a><a id="AN-sObj-link-5738" href="javascript:goToSceneID(19)" target="_self"> <div class="AN-Object" id="AN-sObj-5738"><div id="AN-sObj-val-5738"><img src="assets/banquet3_btn.png"></div></div></a><a id="AN-sObj-link-5739" href="javascript:goToSceneID(18)" target="_self"> <div class="AN-Object" id="AN-sObj-5739"><div id="AN-sObj-val-5739"><img src="assets/banquet2_btn.png"></div></div></a></div><div class="AN-Object" id="AN-sObj-5740"><div id="AN-sObj-val-5740"><img src="assets/Text-ico.png"></div></div><a id="AN-sObj-link-5741" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5741"><div id="AN-sObj-val-5741"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-13"><div class="AN-sObj-stage" id="ext-gen4857"><div class="AN-Object" id="AN-sObj-5743"><div id="AN-sObj-val-5743"><img src="assets/banqet_fin.jpg"></div></div><div id="AN-sObj-5744"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>La salle à manger en cours de fouille : mosaïque centrale et espace réservé pour les banquettes périphériques (photo B. Clément)</span></div><div id="AN-sObj-5745"><div class="AN-Object" id="AN-sObj-5746"><div id="AN-sObj-val-5746"><img src="assets/banquet1_btn.png"></div></div><a id="AN-sObj-link-5747" href="javascript:goToSceneID(20)" target="_self"> <div class="AN-Object" id="AN-sObj-5747"><div id="AN-sObj-val-5747"><img src="assets/banquet4_btn.png"></div></div></a><a id="AN-sObj-link-5748" href="javascript:goToSceneID(19)" target="_self"> <div class="AN-Object" id="AN-sObj-5748"><div id="AN-sObj-val-5748"><img src="assets/banquet3_btn.png"></div></div></a><a id="AN-sObj-link-5749" href="javascript:goToSceneID(18)" target="_self"> <div class="AN-Object" id="AN-sObj-5749"><div id="AN-sObj-val-5749"><img src="assets/banquet2_btn.png"></div></div></a></div><a id="AN-sObj-link-5750" href="javascript:goToSceneID(16)" target="_self"> <div class="AN-Object" id="AN-sObj-5750"><div id="AN-sObj-val-5750"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5751" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5751"><div id="AN-sObj-val-5751"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-14"><div class="AN-sObj-stage" id="ext-gen4921"><div class="AN-Object" id="AN-sObj-5755"><div id="AN-sObj-val-5755"><img src="assets/banqet_fin.jpg"></div></div><div id="AN-sObj-5756"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>La mosaïque après dégagement (photo M. Poux)</span></div><div id="AN-sObj-5757"><a id="AN-sObj-link-5758" href="javascript:goToSceneID(17)" target="_self"> <div class="AN-Object" id="AN-sObj-5758"><div id="AN-sObj-val-5758"><img src="assets/banquet1_btn.png"></div></div></a><a id="AN-sObj-link-5759" href="javascript:goToSceneID(20)" target="_self"> <div class="AN-Object" id="AN-sObj-5759"><div id="AN-sObj-val-5759"><img src="assets/banquet4_btn.png"></div></div></a><a id="AN-sObj-link-5760" href="javascript:goToSceneID(19)" target="_self"> <div class="AN-Object" id="AN-sObj-5760"><div id="AN-sObj-val-5760"><img src="assets/banquet3_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5761"><div id="AN-sObj-val-5761"><img src="assets/banquet2_btn.png"></div></div></div><a id="AN-sObj-link-5762" href="javascript:goToSceneID(16)" target="_self"> <div class="AN-Object" id="AN-sObj-5762"><div id="AN-sObj-val-5762"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5763" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5763"><div id="AN-sObj-val-5763"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-15"><div class="AN-sObj-stage" id="ext-gen4985"><div class="AN-Object" id="AN-sObj-5767"><div id="AN-sObj-val-5767"><img src="assets/banqet_fin.jpg"></div></div><div id="AN-sObj-5768"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Buste représentant le dieu Bacchus ou le dieu Pan (photo P. Veyssère, Musée gallo-romain de Saint-Romain-en-Gal, département du Rhône) </span></div><div id="AN-sObj-5769"><a id="AN-sObj-link-5770" href="javascript:goToSceneID(17)" target="_self"> <div class="AN-Object" id="AN-sObj-5770"><div id="AN-sObj-val-5770"><img src="assets/banquet1_btn.png"></div></div></a><a id="AN-sObj-link-5771" href="javascript:goToSceneID(20)" target="_self"> <div class="AN-Object" id="AN-sObj-5771"><div id="AN-sObj-val-5771"><img src="assets/banquet4_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5772"><div id="AN-sObj-val-5772"><img src="assets/banquet3_btn.png"></div></div><a id="AN-sObj-link-5773" href="javascript:goToSceneID(18)" target="_self"> <div class="AN-Object" id="AN-sObj-5773"><div id="AN-sObj-val-5773"><img src="assets/banquet2_btn.png"></div></div></a></div><a id="AN-sObj-link-5774" href="javascript:goToSceneID(16)" target="_self"> <div class="AN-Object" id="AN-sObj-5774"><div id="AN-sObj-val-5774"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5775" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5775"><div id="AN-sObj-val-5775"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-16"><div class="AN-sObj-stage" id="ext-gen5049"><div class="AN-Object" id="AN-sObj-5779"><div id="AN-sObj-val-5779"><img src="assets/banqet_fin.jpg"></div></div><div id="AN-sObj-5780"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Masque de théâtre représentant silène, compagnon de Bacchus (photo P. Veyssère, Musée gallo-romain de Saint-Romain-en-Gal, département du Rhône) </span></div><div id="AN-sObj-5781"><a id="AN-sObj-link-5782" href="javascript:goToSceneID(17)" target="_self"> <div class="AN-Object" id="AN-sObj-5782"><div id="AN-sObj-val-5782"><img src="assets/banquet1_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5783"><div id="AN-sObj-val-5783"><img src="assets/banquet4_btn.png"></div></div><a id="AN-sObj-link-5784" href="javascript:goToSceneID(19)" target="_self"> <div class="AN-Object" id="AN-sObj-5784"><div id="AN-sObj-val-5784"><img src="assets/banquet3_btn.png"></div></div></a><a id="AN-sObj-link-5785" href="javascript:goToSceneID(18)" target="_self"> <div class="AN-Object" id="AN-sObj-5785"><div id="AN-sObj-val-5785"><img src="assets/banquet2_btn.png"></div></div></a></div><a id="AN-sObj-link-5786" href="javascript:goToSceneID(16)" target="_self"> <div class="AN-Object" id="AN-sObj-5786"><div id="AN-sObj-val-5786"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5787" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5787"><div id="AN-sObj-val-5787"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-17"><div class="AN-sObj-stage" id="ext-gen5109"><div class="AN-Object" id="AN-sObj-5791"><div id="AN-sObj-val-5791"><img src="assets/Image fixe intro 4-3.jpg"></div></div><div id="AN-sObj-5792"><a id="AN-sObj-link-5793" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5793"><span>Banquet</span></div></a><a id="AN-sObj-link-5794" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5794"><span>Pressoir</span></div></a><a id="AN-sObj-link-5795" href="javascript:goToSceneID(3)" target="_self"> <div id="AN-sObj-5795"><span>Vigne</span></div></a></div></div></li>
+
+<li id="scene-18"><div class="AN-sObj-stage" id="ext-gen5142"> <div class="AN-Object" id="AN-sObj-5798"><div id="AN-sObj-val-5798"><img src="assets/Image fixe intro 4-3.jpg"></div>
+	<div id="player3" style="overflow:hidden;">
+	<video id="movie" width="1024" height="768">
+			 <source src="assets/vigne.mp4" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+		</video>
+	</div>
+	</div></div></li>
+
+<li id="scene-19"><div class="AN-sObj-stage" id="ext-gen5171"><div class="AN-Object" id="AN-sObj-5800"><div id="AN-sObj-val-5800"><img src="assets/vigne_fin.jpg"></div></div><div id="AN-sObj-5801"><span>Un sol sillonné de tranchées de plantation, criblé de trous laissés par l’empreinte de végétaux et de poteaux tuteurs en bois : ces traces sont interprétées par les  archéologues comme les vestiges d’un grand jardin attenant à la villa. On y cultivait des arbres fruitiers, des légumes et des légumineuses (pois, lentilles), mais aussi, de la vigne, attestée par des pollens conservés dans le sol. <br><br>Ce vignoble se présente sous la forme de grandes tranchées parallèles, jalonnées de petits trous de plantation. Groupés par trois ou quatre et disposés de mètre en mètre, ces derniers sont associés à des tranchées latérales, liées à la pratique du provignage, ainsi qu’à de puissants tuteurs en bois qui permettent de restituer une longue pergola sur laquelle montait la vigne.<br><br> Inconnue dans le reste de la Gaule, cette technique d’élevage « en hautains », encore en vigueur en Italie et sur les contreforts du massif alpin, est décrite par les agronomes latins comme typiquement italienne. Son adoption s’explique par l’origine du propriétaire de la villa : un colon probablement originaire du sud de l’Italie, dont il a rapporté les savoir-faire développés dans sa région natale.<br><br>Il s’agit du plus ancien vignoble romain attesté au nord de la Provence. Implanté juste après la conquête de la Gaule, il documente l’une des toutes premières tentatives d’acclimatation de la vigne au nord de la Méditerranée.</span></div><div id="AN-sObj-5802"><a id="AN-sObj-link-5803" href="javascript:goToSceneID(7)" target="_self"> <div class="AN-Object" id="AN-sObj-5803"><div id="AN-sObj-val-5803"><img src="assets/vigne1_btn.png"></div></div></a><a id="AN-sObj-link-5804" href="javascript:goToSceneID(10)" target="_self"> <div class="AN-Object" id="AN-sObj-5804"><div id="AN-sObj-val-5804"><img src="assets/vigne4_btn.png"></div></div></a><a id="AN-sObj-link-5805" href="javascript:goToSceneID(9)" target="_self"> <div class="AN-Object" id="AN-sObj-5805"><div id="AN-sObj-val-5805"><img src="assets/vigne3_btn.png"></div></div></a><a id="AN-sObj-link-5806" href="javascript:goToSceneID(8)" target="_self"> <div class="AN-Object" id="AN-sObj-5806"><div id="AN-sObj-val-5806"><img src="assets/vigne2_btn.png"></div></div></a></div><div class="AN-Object" id="AN-sObj-5807"><div id="AN-sObj-val-5807"><img src="assets/Text-ico.png"></div></div><a id="AN-sObj-link-5808" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5808"><div id="AN-sObj-val-5808"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-20"><div class="AN-sObj-stage" id="ext-gen5235"><div class="AN-Object" id="AN-sObj-5812"><div id="AN-sObj-val-5812"><img src="assets/vigne_fin.jpg"></div></div><div id="AN-sObj-5813"><span>Un sol sillonné de tranchées de plantation, criblé de trous laissés par l’empreinte de végétaux et de poteaux tuteurs en bois : ces traces sont interprétées par les  archéologues comme les vestiges d’un grand jardin attenant à la villa. On y cultivait des arbres fruitiers, des légumes et des légumineuses (pois, lentilles), mais aussi, de la vigne, attestée par des pollens conservés dans le sol. <br><br>Ce vignoble se présente sous la forme de grandes tranchées parallèles, jalonnées de petits trous de plantation. Groupés par trois ou quatre et disposés de mètre en mètre, ces derniers sont associés à des tranchées latérales, liées à la pratique du provignage, ainsi qu’à de puissants tuteurs en bois qui permettent de restituer une longue pergola sur laquelle montait la vigne.<br><br> Inconnue dans le reste de la Gaule, cette technique d’élevage « en hautains », encore en vigueur en Italie et sur les contreforts du massif alpin, est décrite par les agronomes latins comme typiquement italienne. Son adoption s’explique par l’origine du propriétaire de la villa : un colon probablement originaire du sud de l’Italie, dont il a rapporté les savoir-faire développés dans sa région natale.<br><br>Il s’agit du plus ancien vignoble romain attesté au nord de la Provence. Implanté juste après la conquête de la Gaule, il documente l’une des toutes premières tentatives d’acclimatation de la vigne au nord de la Méditerranée.</span></div><div id="AN-sObj-5814"><a id="AN-sObj-link-5815" href="javascript:goToSceneID(26)" target="_self"> <div class="AN-Object" id="AN-sObj-5815"><div id="AN-sObj-val-5815"><img src="assets/vigne1_btn.png"></div></div></a><a id="AN-sObj-link-5816" href="javascript:goToSceneID(29)" target="_self"> <div class="AN-Object" id="AN-sObj-5816"><div id="AN-sObj-val-5816"><img src="assets/vigne4_btn.png"></div></div></a><a id="AN-sObj-link-5817" href="javascript:goToSceneID(28)" target="_self"> <div class="AN-Object" id="AN-sObj-5817"><div id="AN-sObj-val-5817"><img src="assets/vigne3_btn.png"></div></div></a><a id="AN-sObj-link-5818" href="javascript:goToSceneID(27)" target="_self"> <div class="AN-Object" id="AN-sObj-5818"><div id="AN-sObj-val-5818"><img src="assets/vigne2_btn.png"></div></div></a></div><div class="AN-Object" id="AN-sObj-5819"><div id="AN-sObj-val-5819"><img src="assets/Text-ico.png"></div></div><a id="AN-sObj-link-5820" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5820"><div id="AN-sObj-val-5820"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-21"><div class="AN-sObj-stage" id="ext-gen5299"><div class="AN-Object" id="AN-sObj-5822"><div id="AN-sObj-val-5822"><img src="assets/vigne_fin.jpg"></div></div><div id="AN-sObj-5823"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Vue aérienne de la zone de jardins et du vignoble (2008, photo P. Bernard/M. Jeannot)</span></div><div id="AN-sObj-5824"><div class="AN-Object" id="AN-sObj-5825"><div id="AN-sObj-val-5825"><img src="assets/vigne1_btn.png"></div></div><a id="AN-sObj-link-5826" href="javascript:goToSceneID(29)" target="_self"> <div class="AN-Object" id="AN-sObj-5826"><div id="AN-sObj-val-5826"><img src="assets/vigne4_btn.png"></div></div></a><a id="AN-sObj-link-5827" href="javascript:goToSceneID(28)" target="_self"> <div class="AN-Object" id="AN-sObj-5827"><div id="AN-sObj-val-5827"><img src="assets/vigne3_btn.png"></div></div></a><a id="AN-sObj-link-5828" href="javascript:goToSceneID(27)" target="_self"> <div class="AN-Object" id="AN-sObj-5828"><div id="AN-sObj-val-5828"><img src="assets/vigne2_btn.png"></div></div></a></div><a id="AN-sObj-link-5829" href="javascript:goToSceneID(25)" target="_self"> <div class="AN-Object" id="AN-sObj-5829"><div id="AN-sObj-val-5829"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5830" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5830"><div id="AN-sObj-val-5830"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-22"><div class="AN-sObj-stage" id="ext-gen5363"><div class="AN-Object" id="AN-sObj-5834"><div id="AN-sObj-val-5834"><img src="assets/vigne_fin.jpg"></div></div><div id="AN-sObj-5835"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Tranchée et trous de plantation de vigne (photo F. Prioux)</span></div><div id="AN-sObj-5836"><a id="AN-sObj-link-5837" href="javascript:goToSceneID(26)" target="_self"> <div class="AN-Object" id="AN-sObj-5837"><div id="AN-sObj-val-5837"><img src="assets/vigne1_btn.png"></div></div></a><a id="AN-sObj-link-5838" href="javascript:goToSceneID(29)" target="_self"> <div class="AN-Object" id="AN-sObj-5838"><div id="AN-sObj-val-5838"><img src="assets/vigne4_btn.png"></div></div></a><a id="AN-sObj-link-5839" href="javascript:goToSceneID(28)" target="_self"> <div class="AN-Object" id="AN-sObj-5839"><div id="AN-sObj-val-5839"><img src="assets/vigne3_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5840"><div id="AN-sObj-val-5840"><img src="assets/vigne2_btn.png"></div></div></div><a id="AN-sObj-link-5841" href="javascript:goToSceneID(25)" target="_self"> <div class="AN-Object" id="AN-sObj-5841"><div id="AN-sObj-val-5841"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5842" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5842"><div id="AN-sObj-val-5842"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-23"><div class="AN-sObj-stage" id="ext-gen5427"><div class="AN-Object" id="AN-sObj-5846"><div id="AN-sObj-val-5846"><img src="assets/vigne_fin.jpg"></div></div><div id="AN-sObj-5847"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Détail des trous de plantation de vigne et empreinte de tuteur (photo F. Prioux)</span></div><div id="AN-sObj-5848"><a id="AN-sObj-link-5849" href="javascript:goToSceneID(26)" target="_self"> <div class="AN-Object" id="AN-sObj-5849"><div id="AN-sObj-val-5849"><img src="assets/vigne1_btn.png"></div></div></a><a id="AN-sObj-link-5850" href="javascript:goToSceneID(29)" target="_self"> <div class="AN-Object" id="AN-sObj-5850"><div id="AN-sObj-val-5850"><img src="assets/vigne4_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5851"><div id="AN-sObj-val-5851"><img src="assets/vigne3_btn.png"></div></div><a id="AN-sObj-link-5852" href="javascript:goToSceneID(27)" target="_self"> <div class="AN-Object" id="AN-sObj-5852"><div id="AN-sObj-val-5852"><img src="assets/vigne2_btn.png"></div></div></a></div><a id="AN-sObj-link-5853" href="javascript:goToSceneID(25)" target="_self"> <div class="AN-Object" id="AN-sObj-5853"><div id="AN-sObj-val-5853"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5854" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5854"><div id="AN-sObj-val-5854"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+<li id="scene-24"><div class="AN-sObj-stage" id="ext-gen5491"><div class="AN-Object" id="AN-sObj-5858"><div id="AN-sObj-val-5858"><img src="assets/vigne_fin.jpg"></div></div><div id="AN-sObj-5859"><span><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Pollen de vigne piégé dans une des tranchées de plantation (vitis vinifera, photo C. Latour-Argant)</span></div><div id="AN-sObj-5860"><a id="AN-sObj-link-5861" href="javascript:goToSceneID(26)" target="_self"> <div class="AN-Object" id="AN-sObj-5861"><div id="AN-sObj-val-5861"><img src="assets/vigne1_btn.png"></div></div></a><div class="AN-Object" id="AN-sObj-5862"><div id="AN-sObj-val-5862"><img src="assets/vigne4_btn.png"></div></div><a id="AN-sObj-link-5863" href="javascript:goToSceneID(28)" target="_self"> <div class="AN-Object" id="AN-sObj-5863"><div id="AN-sObj-val-5863"><img src="assets/vigne3_btn.png"></div></div></a><a id="AN-sObj-link-5864" href="javascript:goToSceneID(27)" target="_self"> <div class="AN-Object" id="AN-sObj-5864"><div id="AN-sObj-val-5864"><img src="assets/vigne2_btn.png"></div></div></a></div><a id="AN-sObj-link-5865" href="javascript:goToSceneID(25)" target="_self"> <div class="AN-Object" id="AN-sObj-5865"><div id="AN-sObj-val-5865"><img src="assets/Text-ico.png"></div></div></a><a id="AN-sObj-link-5866" href="javascript:goToSceneID(0)" target="_self"> <div class="AN-Object" id="AN-sObj-5866"><div id="AN-sObj-val-5866"><img src="assets/Home-ico.png"></div></div></a></div></li>
+
+</ol>
+
+</body>
+</html>
